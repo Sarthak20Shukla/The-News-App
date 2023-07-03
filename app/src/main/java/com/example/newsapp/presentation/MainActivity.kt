@@ -2,6 +2,8 @@ package com.example.newsapp.presentation
 
 import android.os.Build
 import android.os.Bundle
+import android.os.SystemClock
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
@@ -38,7 +40,18 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+    @Deprecated("Deprecated in Java")
+    @RequiresApi(Build.VERSION_CODES.M)
+    override fun onBackPressed(){
+        if(pressedTime+2000 > System.currentTimeMillis()){
+            super.onBackPressed()
+            finish()
+        } else{
+            Toast.makeText(baseContext, "Press back again to exit",Toast.LENGTH_SHORT).show();
 
+        }
+        pressedTime=System.currentTimeMillis();
+    }
 }
 @Composable
 fun Myapp(content: @Composable () -> Unit) {
