@@ -9,6 +9,7 @@ fun List<ArticleDTO1>.toDomain():List<Article>{
             content = it.content?:"",
             description = it.description?:"",
             title = it.title?:"",
+            url=it.url?:"",
             urlToImage = it.urlToImage?:"",
             author = it.author?:""
         )

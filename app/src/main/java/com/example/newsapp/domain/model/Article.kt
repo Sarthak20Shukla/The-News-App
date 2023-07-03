@@ -9,7 +9,7 @@ data class Article(
    // val publishedAt: String,
    // val source: SourceDTO1,
     val title: String,
-   // val url: String,
+    val url: String,
     val urlToImage: String
 )
 
