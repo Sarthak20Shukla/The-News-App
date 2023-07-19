@@ -66,7 +66,7 @@ fun ArticleItem(it: Article) {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(it.url))
         context.startActivity(intent)
     }
-    Column(modifier = Modifier) {
+    Column(modifier = Modifier.padding(5.dp)) {
 
         Image(
             painter = rememberImagePainter(data = it.urlToImage), contentDescription = null,
@@ -74,7 +74,7 @@ fun ArticleItem(it: Article) {
                 .height(300.dp)
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(10.dp))
-                .shadow(10.dp,shape = RoundedCornerShape(10.dp))
+                .shadow(10.dp,shape = RoundedCornerShape(20.dp))
                 .clickable {
                            onClick()
                 },
@@ -87,14 +87,15 @@ fun ArticleItem(it: Article) {
                 fontWeight = FontWeight.SemiBold, fontSize = 20.sp
             ),
             modifier = Modifier.padding(start = 12.dp, top = 12.dp, end = 12.dp, bottom = 5.dp)
+                .clickable { onClick() }
         )
         Text(
                 text = it.author, style = androidx.compose.ui.text.TextStyle(color = Color.Gray,
-        fontWeight = FontWeight.Light, fontSize = 15.sp
+        fontWeight = FontWeight.Light, fontSize = 6.sp
         ),
         modifier = Modifier.padding(start = 12.dp, bottom = 12.dp)
         )
-        Spacer(modifier=Modifier.height(12.dp))
+        Spacer(modifier=Modifier.height(8.dp))
 
     }
 
