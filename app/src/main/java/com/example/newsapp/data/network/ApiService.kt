@@ -11,7 +11,7 @@ interface ApiService {
     @GET("top-headlines")
     suspend fun getNewsArticles(
    // @Query("q") q : String="",
-    @Query("category") category : String="sports",
+    //@Query("category") category : String="top-headlines",
     @Query("country") country:String="in",
     @Query("ApiKey") apiKey:String=BuildConfig.API_KEY
     ):Response<NewsDTO1>
