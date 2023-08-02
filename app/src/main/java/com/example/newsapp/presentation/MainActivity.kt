@@ -6,12 +6,10 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.SnackbarDefaults.backgroundColor
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
@@ -28,7 +26,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.newsapp.presentation.screens.Business
 import com.example.newsapp.presentation.screens.Homescreen
+import com.example.newsapp.presentation.screens.International
+import com.example.newsapp.presentation.screens.Sports
 import com.example.newsapp.ui.theme.NewsAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -41,11 +42,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             NewsAppTheme {
-                // A surface container using the 'background' color from the theme
                 val navController= rememberNavController()
                 Scaffold(
+                    topBar={
+                      NewsTopAppBar()
+                    },
                    // modifier = Modifier.fillMaxSize(),
-                   // color = MaterialTheme.colors.background,
+                    backgroundColor = MaterialTheme.colors.background,
                     bottomBar={
                         BottomNavigationBar(
                             items = listOf(
@@ -81,11 +84,13 @@ class MainActivity : ComponentActivity() {
                         )
                     }
                 ) {
-                  Navigation(navController = navController)
+                    Navigation(navController = navController)
                 }
             }
         }
     }
+
+
     @Deprecated("Deprecated in Java")
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onBackPressed(){
@@ -111,14 +116,32 @@ fun Navigation(navController: NavHostController) {
             Homescreen()
         }
         composable("international") {
-           // ChatScreen()
+            International()
         }
         composable("business") {
-           // SettingsScreen()
+            Business()
         }
         composable("sports") {
-            // SettingsScreen()
+            Sports()
         }
+    }
+}
+@Composable
+fun NewsTopAppBar(modifier: Modifier=Modifier) {
+    Row(modifier = modifier
+        .fillMaxWidth()
+        .padding(vertical = 10.dp, horizontal = 16.dp)
+        .background(color = Color.Transparent),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically){
+        /*Image(
+            modifier = Modifier
+                .size(64.dp)
+                .padding(8.dp),
+            painter = painterResource(id = R.drawable.ic_launcher_background),
+            contentDescription = null
+        )*/
+        Text(text = "Welcome",style = MaterialTheme.typography.h6,color=MaterialTheme.colors.surface )
     }
 }
 @ExperimentalMaterialApi
@@ -131,7 +154,10 @@ fun BottomNavigationBar(
 ) {
     val backStackEntry = navController.currentBackStackEntryAsState()
     BottomNavigation(
-        modifier = modifier.fillMaxWidth().padding(bottom = 15.dp, start = 5.dp,end=5.dp).clip(RoundedCornerShape(20.dp,20.dp,20.dp,20.dp)),
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(bottom = 15.dp, start = 5.dp, end = 5.dp)
+            .clip(RoundedCornerShape(20.dp, 20.dp, 20.dp, 20.dp)),
         backgroundColor = Color.DarkGray,
         elevation = 0.dp,
 
@@ -143,7 +169,7 @@ fun BottomNavigationBar(
             BottomNavigationItem(
                 selected = selected,
                 onClick = { onItemClick(item) },
-                selectedContentColor = Color.White,
+                selectedContentColor = Color(0xFF32CD32),
                 unselectedContentColor = Color.Gray,
                 icon = {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {

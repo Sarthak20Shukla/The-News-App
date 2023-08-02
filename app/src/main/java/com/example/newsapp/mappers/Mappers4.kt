@@ -1,11 +1,11 @@
 package com.example.newsapp.mappers
 
-import com.example.newsapp.data.model1.ArticleDTO1
-import com.example.newsapp.domain.domain1.model.Article1
+import com.example.newsapp.data.model1.ArticleDTO4
+import com.example.newsapp.domain.domain4.model.Article4
 
-fun List<ArticleDTO1>.toDomain():List<Article1>{
+fun List<ArticleDTO4>.toDomain():List<Article4>{
     return  map{
-        Article1(
+        Article4(
             content = it.content?:"",
             description = it.description?:"",
             title = it.title?:"",

@@ -1,4 +1,5 @@
-package com.example.newsapp.data.model
+package com.example.newsapp.data.model1
+
 
 data class ArticleDTO1(
     val author: String?,

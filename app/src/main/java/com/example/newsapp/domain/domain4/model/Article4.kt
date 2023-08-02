@@ -1,8 +1,6 @@
-package com.example.newsapp.domain.model
+package com.example.newsapp.domain.domain4.model
 
-import com.example.newsapp.data.model.SourceDTO1
-
-data class Article(
+data class Article4(
     val author: String,
     val content: String,
     val description: String,

@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object DataModule
 {
     @Provides
-fun provideApiService():ApiService{
+fun provideApiService(): ApiService {
     return Retrofit.Builder().baseUrl("https://newsapi.org/v2/").addConverterFactory(GsonConverterFactory.create())
         .build().create(ApiService::class.java)
 }

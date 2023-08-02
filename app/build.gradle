@@ -68,6 +68,7 @@ dependencies {
    // implementation "androidx.compose.material3:material3-window-size-class"
     //implementation "androidx.navigation:navigation-compose:2.4.0-alpha06"
     implementation "androidx.compose.material:material-icons-extended:$compose_ui_version"
+   // implementation "com.exyte:animated-navigation-bar:0.8.0"
 // system bars customization
     implementation "com.google.accompanist:accompanist-systemuicontroller:0.23.1"
 
