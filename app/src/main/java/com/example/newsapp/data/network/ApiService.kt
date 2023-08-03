@@ -31,6 +31,7 @@ interface ApiService {
         // @Query("q") q : String="",
         @Query("category") category : String="business",
         @Query("country") country:String="in",
+       // @Query("Country") country: String="us",
         @Query("ApiKey") apiKey:String=BuildConfig.API_KEY
     ):Response<NewsDTO3>
 
