@@ -6,7 +6,9 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -17,15 +19,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import androidx.navigation.Navigation
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.newsapp.R
 import com.example.newsapp.presentation.screens.Business
 import com.example.newsapp.presentation.screens.Homescreen
 import com.example.newsapp.presentation.screens.International
@@ -43,6 +48,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             NewsAppTheme {
                 val navController= rememberNavController()
+
                 Scaffold(
                     topBar={
                       NewsTopAppBar()
@@ -134,14 +140,14 @@ fun NewsTopAppBar(modifier: Modifier=Modifier) {
         .background(color = Color.Transparent),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically){
-        /*Image(
+        Text(text = "Welcome", modifier = Modifier.clickable(onClick =  { }) , style = MaterialTheme.typography.h6,color=MaterialTheme.colors.surface )
+
+        Image(painter = painterResource(id = R.drawable.avatar_0), contentDescription = null,
             modifier = Modifier
-                .size(64.dp)
-                .padding(8.dp),
-            painter = painterResource(id = R.drawable.ic_launcher_background),
-            contentDescription = null
-        )*/
-        Text(text = "Welcome",style = MaterialTheme.typography.h6,color=MaterialTheme.colors.surface )
+                .clickable { }
+                .clip(RoundedCornerShape(50))
+                .background(color = Color.Transparent, shape = RoundedCornerShape(50))
+                .size(40.dp))
     }
 }
 @ExperimentalMaterialApi

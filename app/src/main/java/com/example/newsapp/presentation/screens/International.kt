@@ -9,9 +9,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -67,10 +67,26 @@ fun ArticleItem2(it: Article2) {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(it.url))
         context.startActivity(intent)
     }
+    val sendIntent: Intent = Intent().apply {
+        action = Intent.ACTION_SEND
+        putExtra(Intent.EXTRA_TEXT, it.url)
+        type = "text/plain"
+    }
+
+    val shareIntent = Intent.createChooser(sendIntent, null)
+
+
+
     Spacer(modifier=Modifier.height(4.dp))
 
-    Column(modifier = Modifier.padding(5.dp).wrapContentWidth().fillMaxHeight().background(color = MaterialTheme.colors.onBackground,RoundedCornerShape(20.dp))
-        .clip(shape = RoundedCornerShape(20.dp)).shadow(1.5.dp,shape = RoundedCornerShape(3.dp)).clickable { onClick() }) {
+    Column(modifier = Modifier
+        .padding(5.dp)
+        .wrapContentWidth()
+        .fillMaxHeight()
+        .background(color = MaterialTheme.colors.onBackground, RoundedCornerShape(20.dp))
+        .clip(shape = RoundedCornerShape(20.dp))
+        .shadow(1.5.dp, shape = RoundedCornerShape(3.dp))
+        .clickable { onClick() }) {
 
         Image(
             painter = rememberImagePainter(data = it.urlToImage), contentDescription = null,
@@ -86,16 +102,19 @@ fun ArticleItem2(it: Article2) {
             text = it.title, style = androidx.compose.ui.text.TextStyle(color = MaterialTheme.colors.onSurface,
                 fontWeight = FontWeight.SemiBold, fontSize = 20.sp
             ),
-            modifier = Modifier.padding(start = 12.dp, top = 12.dp, end = 12.dp, bottom = 7.dp).fillMaxWidth()
+            modifier = Modifier
+                .padding(start = 12.dp, top = 12.dp, end = 12.dp, bottom = 7.dp)
+                .fillMaxWidth()
         )
         Text(
             text = it.author, style = androidx.compose.ui.text.TextStyle(color = MaterialTheme.colors.secondaryVariant,
                 fontWeight = FontWeight.Medium, fontSize =10.sp
             ),
-            modifier = Modifier.padding(start = 12.dp, bottom = 7.dp)
+            modifier = Modifier.padding(start = 12.dp, bottom = 0.dp)
         )
-        Spacer(modifier=Modifier.height(6.dp))
-
+        IconButton(onClick = { context.startActivity(shareIntent) }) {
+            Icon(modifier= Modifier.size(18.dp).align(alignment = Alignment.End),imageVector = Icons.Default.Share, contentDescription = "Share", tint = MaterialTheme.colors.onSurface)
+        }
     }
     Spacer(modifier=Modifier.height(5.dp))
 }
