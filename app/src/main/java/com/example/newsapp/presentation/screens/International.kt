@@ -24,6 +24,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import coil.compose.rememberAsyncImagePainter
 import coil.compose.rememberImagePainter
 import com.example.newsapp.domain.domain1.model.Article1
 import com.example.newsapp.domain.domain2.model.Article2
@@ -89,7 +90,7 @@ fun ArticleItem2(it: Article2) {
         .clickable { onClick() }) {
 
         Image(
-            painter = rememberImagePainter(data = it.urlToImage), contentDescription = null,
+            painter = rememberAsyncImagePainter(model = it.urlToImage), contentDescription = null,
             modifier = Modifier
                 .height(180.dp)
                 .fillMaxWidth(),

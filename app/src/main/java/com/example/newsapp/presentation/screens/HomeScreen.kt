@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat.startActivity
 import androidx.hilt.navigation.compose.hiltViewModel
+import coil.compose.rememberAsyncImagePainter
 import coil.compose.rememberImagePainter
 import com.example.newsapp.R
 import com.example.newsapp.domain.domain1.model.Article1
@@ -88,7 +89,7 @@ fun ArticleItem(it: Article1) {
         .clickable { onClick() }) {
 
         Image(
-            painter = rememberImagePainter(data = it.urlToImage), contentDescription = null,
+            painter = rememberAsyncImagePainter(model = it.urlToImage), contentDescription = null,
             modifier = Modifier
                 .height(180.dp)
                 .fillMaxWidth(),
