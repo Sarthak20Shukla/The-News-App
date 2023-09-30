@@ -37,6 +37,10 @@ News App uses libraries and tools used to build Modern Android application, main
 
 The app uses MVVM [Model-View-ViewModel] architecture to have a unidirectional flow of data, separation of concern, testability, and a lot more.
 
+
+
+<img alt="Exit Page" height="450px" src="https://github.com/Sarthak20Shukla/newsapp/blob/master/app/src/main/res/drawable/clean_mvvm.jpeg" />
+
 ## Developed by:-
 
 - [Sarthak Shukla](https://github.com/Sarthak20Shukla)
